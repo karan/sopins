@@ -3,16 +3,15 @@ import sys
 from setuptools import setup, find_packages
 
 setup(
-    name='pypipins',
+    name='sopins',
     version='0.0.0',
-    description='Badges for your site to display download totals, latest version using crate.io http://pypip.in',
-    # long_description=long_description,
-    author='Kura',
-    author_email='kura@kura.io',
-    url='https://github.com/kura/pypipins',
+    description='Badges for your site to display social buttons.',
+    author='Karan Goel',
+    author_email='karan@goel.im',
+    url='https://github.com/karan/sopins',
     packages=find_packages(),
     zip_safe=False,
-    keywords='PyPI crate.io badges pins',
+    keywords='social twitter facebook badges pins',
     install_requires=[
         'Twisted>=13.2.0',
         'klein>=0.2.3',
