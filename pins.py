@@ -16,26 +16,11 @@ app = Flask(__name__)
 
 Twitter_URL = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
 SHIELD_URL = "http://img.shields.io/badge/%s-%s-%s.%s"
-# SHIELD_URL = "http://localhost:9000/badge/%s-%s-%s.%s"  # pypip.in uses a local version of img.shields.io
-
-
-def format_number(singular, number):
-    value = singular % {'value': number}
-    # Get rid of the .0 but keep the other decimals
-    return value.replace('.0', '')
-
-
-intword_converters = (
-    (3, lambda number: format_number('%(value).1fK', number)),
-    (6, lambda number: format_number('%(value).1fM', number)),
-    (9, lambda number: format_number('%(value).1fB', number)),
-)
 
 
 class TwitterHandler(object):
     '''Get the twitter json data for the url, and process.'''
-    shield_subject = None
-    request = None
+    shield_subject = 'Tweet'
     format = 'png'
 
     def get(self, url, format, *args, **kwargs):
@@ -68,17 +53,12 @@ generators = {
     'twitter': TwitterHandler
 }
 
-@app.route('/')
-def hello():
-    return "Hello world"
-
-
-@app.route('/url=<path:url>', methods=['GET'])
-def shield(url, generator="twitter", extension="png"):
+@app.route('/<generator>/<extension>/<path:url>', methods=['GET'])
+def shield(generator, extension, url):
     gen_class = generators[generator]()
     img = gen_class.get(url, extension)
     resp = make_response(img.read())
-    resp.content_type = "image/jpeg"
+    resp.content_type = extension
     return resp
 
 
