@@ -8,7 +8,7 @@ import mimetypes
 
 import simplejson as json
 import requests
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, render_template
 
 
 app = Flask(__name__)
@@ -80,6 +80,10 @@ generators = {
     'facebook': FacebookHandler
 }
 
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+    
 @app.route('/facebook/<fb_type>/<format>/<path:url>', methods=['GET'])
 def fb_shield(url, format='png', fb_type='like'):
     gen_class = FacebookHandler()
