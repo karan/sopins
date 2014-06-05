@@ -4,8 +4,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='sopins',
-    version='0.0.0',
-    description='Badges for your site to display social buttons.',
+    version='0.0.1',
+    description='Social badges on the fly.',
     author='Karan Goel',
     author_email='karan@goel.im',
     url='https://github.com/karan/sopins',
@@ -13,10 +13,10 @@ setup(
     zip_safe=False,
     keywords='social twitter facebook badges pins',
     install_requires=[
-        'Twisted>=13.2.0',
-        'klein>=0.2.3',
+        'flask>=0.10.1',
         'requests>=2.2.1',
         'simplejson>=3.3.3',
+        'gunicorn==18.0',
     ],
     classifiers=[
         'Programming Language :: Python :: 2',
