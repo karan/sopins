@@ -42,7 +42,7 @@ class TwitterHandler():
 class FacebookHandler():
     '''Get the facebook json data for the url, and process.'''
     shield_subject = 'Like'
-    shield_color = '55ACEE'
+    shield_color = '3b5998'
 
     def get(self, url, format, fb_type):
         url = Facebook_URL % url
