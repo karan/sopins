@@ -1,4 +1,4 @@
-SoPins
+[SoPins](http://sopins.heroku.com/)
 =================
 
 ![](http://i.imgur.com/LJPYfaw.png)
@@ -7,6 +7,8 @@ Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins)
 
 ## Usage
 
+**See [docs](http://sopins.heroku.com/) for full examples.**
+
 ### Tweet
 
     http://sopins.herokuapp.com/twitter/<format>/<url>
@@ -14,6 +16,12 @@ Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins)
   Example:
 
     http://sopins.herokuapp.com/twitter/png/https://www.google.com
+
+  Full Example:
+
+    [![](http://sopins.herokuapp.com/twitter/png/https://www.google.com)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
+
+  This renders to: [![](http://sopins.herokuapp.com/twitter/png/https://www.google.com)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
 
 ### Facebook
 
@@ -24,6 +32,12 @@ Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins)
   Example:
 
     http://sopins.herokuapp.com/facebook/share/png/https://www.google.com
+
+  Full Example:
+
+    [![](http://sopins.herokuapp.com/facebook/share/png/https://www.google.com)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
+
+  This renders to: [![](http://sopins.herokuapp.com/facebook/share/png/https://www.google.com)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
 
   **2. Like**
 
