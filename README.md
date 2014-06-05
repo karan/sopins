@@ -1,8 +1,7 @@
 SoPins
 =================
 
-| ![](http://sopins.herokuapp.com/facebook/share/png/https://www.google.com) | ![](http://sopins.herokuapp.com/facebook/like/png/https://www.google.com) | ![](http://sopins.herokuapp.com/twitter/png/https://www.google.com) |
-| --- | ---- | ----- |
+![](http://i.imgur.com/LJPYfaw.png)
 
 Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins) by [karan](http://github.com/karan) ([@karangoel](http://twitter.com/karangoel)).
 
