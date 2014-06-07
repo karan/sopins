@@ -92,7 +92,7 @@ def fb_shield(url, format='png', fb_type='like'):
     resp.content_type = format
     return resp
 
-@app.route('/<generator>/<format>/<path:url>', methods=['GET'])
+@app.route('/<generator>/<path:url>/badge.<format>', methods=['GET'])
 def shield(generator, url, format='png', fb_type='like'):
     gen_class = generators[generator]()
     img = gen_class.get(url, format)
