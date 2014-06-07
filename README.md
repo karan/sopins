@@ -11,41 +11,41 @@ Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins)
 
 ### Tweet
 
-    http://sopins.herokuapp.com/twitter/<format>/<url>
+    http://sopins.herokuapp.com/twitter/<url>/pin.<format>
 
   Example:
 
-    http://sopins.herokuapp.com/twitter/png/https://www.google.com
+    http://sopins.herokuapp.com/twitter/https://www.google.com/pin.png
 
   Full Example:
 
-    [![](http://sopins.herokuapp.com/twitter/png/https://www.google.com)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
+    [![](http://sopins.herokuapp.com/twitter/https://www.google.com/pin.png)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
 
-  This renders to: [![](http://sopins.herokuapp.com/twitter/png/https://www.google.com)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
+  This renders to: [![](http://sopins.herokuapp.com/twitter/https://www.google.com/pin.png)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
 
 ### Facebook
 
   **1. Share**
 
-    http://sopins.herokuapp.com/facebook/like/<format>/<url>
+    http://sopins.herokuapp.com/facebook/like/<url>/pin.<format>
 
   Example:
 
-    http://sopins.herokuapp.com/facebook/share/png/https://www.google.com
+    http://sopins.herokuapp.com/facebook/share/https://www.google.com/pin.png
 
   Full Example:
 
-    [![](http://sopins.herokuapp.com/facebook/share/png/https://www.google.com)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
+    [![](http://sopins.herokuapp.com/facebook/share/https://www.google.com/pin.png)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
 
-  This renders to: [![](http://sopins.herokuapp.com/facebook/share/png/https://www.google.com)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
+  This renders to: [![](http://sopins.herokuapp.com/facebook/share/https://www.google.com/pin.png)](https://www.facebook.com/sharer/sharer.php?u=http://www.goel.im)
 
   **2. Like**
 
-    http://sopins.herokuapp.com/facebook/share/<format>/<url>
+    http://sopins.herokuapp.com/facebook/share/<url>/pin.<format>
 
   Example:
 
-    http://sopins.herokuapp.com/facebook/like/png/https://www.google.com    
+    http://sopins.herokuapp.com/facebook/like/https://www.google.com/pin.png
 
 ## Formats
 
