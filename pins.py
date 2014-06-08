@@ -8,7 +8,7 @@ import mimetypes
 
 import simplejson as json
 import requests
-from flask import Flask, request, make_response, render_template, Response
+from flask import Flask, request, make_response, redirect
 
 
 app = Flask(__name__)
@@ -82,7 +82,7 @@ generators = {
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return redirect("https://github.com/karan/sopins", code=301)
     
 @app.route('/facebook/<fb_type>/<path:url>/pin.<format>', methods=['GET'])
 def fb_shield(url, format='png', fb_type='like'):
