@@ -8,7 +8,7 @@ import mimetypes
 
 import simplejson as json
 import requests
-from flask import Flask, request, make_response, render_template
+from flask import Flask, request, make_response, render_template, Response
 
 
 app = Flask(__name__)
@@ -88,17 +88,20 @@ def index():
 def fb_shield(url, format='png', fb_type='like'):
     gen_class = FacebookHandler()
     img = gen_class.get(url, format, fb_type)
+    
     resp = make_response(img.read())
-    resp.content_type = format
+    resp.headers['Content-Type'] = mimetypes.types_map[".{0}".format(format)]
     return resp
 
 @app.route('/<generator>/<path:url>/pin.<format>', methods=['GET'])
 def shield(generator, url, format='png', fb_type='like'):
     gen_class = generators[generator]()
     img = gen_class.get(url, format)
+    
     resp = make_response(img.read())
-    resp.content_type = format
+    resp.headers['Content-Type'] = mimetypes.types_map[".{0}".format(format)]
     return resp
+    # return Response(img.read(),  mimetype=mimetypes.types_map[".{0}".format(format)])
 
 
 if __name__ == "__main__":
