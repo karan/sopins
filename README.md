@@ -5,7 +5,7 @@ Social badges on the fly. A fork of [pypins](https://github.com/badges/pypipins)
 
 | Tweet | Like | Share |
 | ----- | ---- | ----- | 
-| ![](http://sopins.herokuapp.com/twitter/http://www.goel.im/pin.png) | ![](http://sopins.herokuapp.com/facebook/like/http://www.goel.im/pin.png) | ![](http://sopins.herokuapp.com/facebook/share/http://www.goel.im/pin.png) |
+| ![](http://sopins.herokuapp.com/twitter/http://www.goel.io/pin.png) | ![](http://sopins.herokuapp.com/facebook/like/http://www.goel.io/pin.png) | ![](http://sopins.herokuapp.com/facebook/share/http://www.goel.io/pin.png) |
 
 Example badges for `http://www.goel.im/`.
 
