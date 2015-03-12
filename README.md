@@ -25,6 +25,18 @@ Example badges for `http://www.goel.im/`.
 
   This renders to: [![](http://sopins.herokuapp.com/twitter/https://www.google.com/pin.png)](https://twitter.com/intent/tweet?text=This+is+Amazing.&amp;url=http://www.goel.im&amp;via=KaranGoel)
 
+###LinkedIn
+
+  ```
+  http://sopins.herokuapp.com/linkedin/<url>/pin.<format>
+  ```
+
+  Example:
+  ```
+  http://sopins.herokuapp.com/linkedin/http://arstechnica.com/pin.png
+  ```
+  
+
 ### Facebook
 
   **1. Share**
