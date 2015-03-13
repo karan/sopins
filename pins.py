@@ -7,6 +7,7 @@ except ImportError:
 import mimetypes
 
 import simplejson as json
+
 import requests
 from flask import Flask, request, make_response, redirect
 
@@ -15,8 +16,9 @@ app = Flask(__name__)
 
 
 # URLs for getting share counts
-Twitter_URL = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
+Twitter_URL = "http://cdn.api.twitter.com/1/urls/count.json?url=%s"
 Facebook_URL = "https://api.facebook.com/method/links.getStats?urls=%s&format=json"
+LinkedIn_URL = "https://www.linkedin.com/countserv/count/share?url=%s&format=json"
 
 # subject, status, color, format
 SHIELD_URL = "http://img.shields.io/badge/%s-%s-%s.%s"
@@ -29,6 +31,22 @@ class TwitterHandler():
 
     def get(self, url, format):
         url = Twitter_URL % url
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            return self.write_shield('error', 'error', 'red')
+        else:
+            data = json.loads(response.content)
+            return write_shield(self.shield_subject, data['count'], 
+                self.shield_color, format)
+
+class LinkedInHandler():
+    shield_subject = 'LinkedIn Share'
+    shield_color = '489DC9'
+
+    def get(self, url, format):
+        url = LinkedIn_URL % url 
         try:
             response = requests.get(url)
             response.raise_for_status()
@@ -77,7 +95,8 @@ def write_shield(subject, count, color, format):
 
 generators = {
     'twitter': TwitterHandler,
-    'facebook': FacebookHandler
+    'facebook': FacebookHandler,
+    'linkedin': LinkedInHandler
 }
 
 @app.route('/', methods=['GET'])
