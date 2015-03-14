@@ -29,7 +29,7 @@ class TwitterHandler():
     shield_subject = 'Tweet'
     shield_color = '55ACEE'
 
-    def get(self, url, format):
+    def get(self, url, format, endpoint=SHIELD_URL):
         url = Twitter_URL % url
         try:
             response = requests.get(url)
@@ -39,13 +39,13 @@ class TwitterHandler():
         else:
             data = json.loads(response.content)
             return write_shield(self.shield_subject, data['count'], 
-                self.shield_color, format)
+                self.shield_color, format, endpoint=endpoint)
 
 class LinkedInHandler():
     shield_subject = 'LinkedIn Share'
     shield_color = '489DC9'
 
-    def get(self, url, format):
+    def get(self, url, format, endpoint=SHIELD_URL):
         url = LinkedIn_URL % url 
         try:
             response = requests.get(url)
@@ -55,14 +55,14 @@ class LinkedInHandler():
         else:
             data = json.loads(response.content)
             return write_shield(self.shield_subject, data['count'], 
-                self.shield_color, format)
+                self.shield_color, format, endpoint=endpoint)
 
 class FacebookHandler():
     '''Get the facebook json data for the url, and process.'''
     shield_subject = 'Like'
     shield_color = '3b5998'
 
-    def get(self, url, format, fb_type):
+    def get(self, url, format, fb_type, endpoint=SHIELD_URL):
         url = Facebook_URL % url
         try:
             response = requests.get(url)
@@ -76,12 +76,12 @@ class FacebookHandler():
                     self.shield_color, format)
             else:
                 return write_shield(self.shield_subject, data['like_count'], 
-                    self.shield_color, format)
+                    self.shield_color, format, endpoint=endpoint)
 
 
-def write_shield(subject, count, color, format):
+def write_shield(subject, count, color, format, endpoint=SHIELD_URL):
     '''Obtain and write the shield to the response.'''
-    shield_url = SHIELD_URL % (
+    shield_url = endpoint % (
         subject,
         count,
         color,
@@ -106,7 +106,11 @@ def index():
 @app.route('/facebook/<fb_type>/<path:url>/pin.<format>', methods=['GET'])
 def fb_shield(url, format='png', fb_type='like'):
     gen_class = FacebookHandler()
-    img = gen_class.get(url, format, fb_type)
+    if not request.args.get('style') is None:
+        styledEndpoint = '{0}?style={1}'.format(SHIELD_URL, request.args.get('style'))
+        img = gen_class.get(url, format, fb_type, endpoint=styledEndpoint)
+    else:
+        img = gen_class.get(url, format, fb_type)
     
     resp = make_response(img.read())
     resp.headers['Content-Type'] = mimetypes.types_map[".{0}".format(format)]
@@ -115,7 +119,11 @@ def fb_shield(url, format='png', fb_type='like'):
 @app.route('/<generator>/<path:url>/pin.<format>', methods=['GET'])
 def shield(generator, url, format='png', fb_type='like'):
     gen_class = generators[generator]()
-    img = gen_class.get(url, format)
+    if not request.args.get('style') is None:
+        styledEndpoint = '{0}?style={1}'.format(SHIELD_URL, request.args.get('style'))
+        img = gen_class.get(url, format, endpoint=styledEndpoint)
+    else:
+        img = gen_class.get(url, format)
     
     resp = make_response(img.read())
     resp.headers['Content-Type'] = mimetypes.types_map[".{0}".format(format)]
