@@ -35,7 +35,7 @@ class TwitterHandler(object):
             response = requests.get(url)
             response.raise_for_status()
         except requests.exceptions.HTTPError:
-            return self.write_shield('error', 'error', 'red')
+            return write_shield('error', 'error', 'red')
         else:
             data = json.loads(response.content)
             return write_shield(self.shield_subject, data['count'], 
@@ -51,7 +51,7 @@ class LinkedInHandler(object):
             response = requests.get(url)
             response.raise_for_status()
         except requests.exceptions.HTTPError:
-            return self.write_shield('error', 'error', 'red')
+            return write_shield('error', 'error', 'red')
         else:
             data = json.loads(response.content)
             return write_shield(self.shield_subject, data['count'], 
@@ -68,7 +68,7 @@ class FacebookHandler(object):
             response = requests.get(url)
             response.raise_for_status()
         except requests.exceptions.HTTPError:
-            return self.write_shield('error', 'error', 'red')
+            return write_shield('error', 'error', 'red')
         else:
             data = json.loads(response.content)[0]
             if fb_type == 'share':
