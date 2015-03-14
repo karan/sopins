@@ -24,7 +24,7 @@ LinkedIn_URL = "https://www.linkedin.com/countserv/count/share?url=%s&format=jso
 SHIELD_URL = "http://img.shields.io/badge/%s-%s-%s.%s"
 
 
-class TwitterHandler():
+class TwitterHandler(object):
     '''Get the twitter json data for the url, and process.'''
     shield_subject = 'Tweet'
     shield_color = '55ACEE'
@@ -41,7 +41,7 @@ class TwitterHandler():
             return write_shield(self.shield_subject, data['count'], 
                 self.shield_color, format, endpoint=endpoint)
 
-class LinkedInHandler():
+class LinkedInHandler(object):
     shield_subject = 'LinkedIn Share'
     shield_color = '489DC9'
 
@@ -57,7 +57,7 @@ class LinkedInHandler():
             return write_shield(self.shield_subject, data['count'], 
                 self.shield_color, format, endpoint=endpoint)
 
-class FacebookHandler():
+class FacebookHandler(object):
     '''Get the facebook json data for the url, and process.'''
     shield_subject = 'Like'
     shield_color = '3b5998'
@@ -77,7 +77,6 @@ class FacebookHandler():
             else:
                 return write_shield(self.shield_subject, data['like_count'], 
                     self.shield_color, format, endpoint=endpoint)
-
 
 def write_shield(subject, count, color, format, endpoint=SHIELD_URL):
     '''Obtain and write the shield to the response.'''
