@@ -70,3 +70,23 @@ SoPins are available in variety of formats:
 - JPEG
 - GIF
 - TIFF
+
+##Styles 
+
+SoPins has support for different styles for the pins, you can use either `flat` (default) , `plastic` and `flat-square` styles for your pins.
+
+Using different styles is very easy, you just need to enter a style parameter in your URL. 
+
+For example:
+
+```
+http://sopins.herokuapp.com/facebook/like/https://www.google.com/pin.png?style=flat-square
+```
+
+```
+http://sopins.herokuapp.com/linkedin/http://arstechnica.com/pin.png?style=plastic
+```
+
+```
+http://sopins.herokuapp.com/linkedin/https://github.com/pin.png?style=flat
+```
